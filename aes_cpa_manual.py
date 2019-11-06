@@ -49,15 +49,10 @@ for bnum in range(0, 2):
         for tnum in range(0, numtraces):
             hyp[tnum] = HW[intermediate(pt[tnum][bnum], kguess)]
 
-        print hyp
         #Mean of hypothesis
         meanh = np.mean(hyp, dtype=np.float64)
-        print "meanh :"
-        print meanh
         #Mean of all points in trace
         meant = np.mean(traces, axis=0, dtype=np.float64)
-        print "meant :"
-        print meant
         #For each trace, do the following
         for tnum in range(0, numtraces):
             hdiff = (hyp[tnum] - meanh)
