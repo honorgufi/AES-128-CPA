@@ -23,8 +23,9 @@ sbox=(
 def intermediate(pt, keyguess):
     return sbox[pt ^ keyguess]
 
-traces = np.load(r'C:\Users\user\chipwhisperer\projects\aes_data\traces\2019.07.25-02.54.52_traces.npy')
-pt = np.load(r'C:\Users\user\chipwhisperer\projects\aes_data\traces\2019.07.25-02.54.52_textin.npy')
+traces = np.load(r'D:\Python\WinPython-32bit-2.7.10.3\2019.07.25-02.54.52_traces.npy')
+pt = np.load(r'D:\Python\WinPython-32bit-2.7.10.3\2019.07.25-02.54.52_textin.npy')
+
 numtraces = np.shape(traces)[0]-1
 numpoint = np.shape(traces)[1]
 
@@ -33,12 +34,10 @@ numpoint = np.shape(traces)[1]
 
 bestguess = [0]*16
 #Set 16 to something lower (like 1) to only go through a single subkey & save time!
-for bnum in range(0, 2):
+for bnum in range(0, 16):
     cpaoutput = [0]*256
     maxcpa = [0]*256
     for kguess in range(0, 256):
-        print "Subkey %2d, hyp = %02x: "%(bnum, kguess),
-
 
         #Initialize arrays & variables to zero
         sumnum = np.zeros(numpoint)
